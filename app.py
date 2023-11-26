@@ -1,28 +1,28 @@
-from flask import Flask, render_template, session, request, redirect, url_for
-from referencial.ciudad.ciudadDAO import CiudadDAO
-
+from flask import Flask, render_template, session, request, redirect, url_for, flash
 
 app = Flask(__name__)
+
+# palabra clave
 app.secret_key = 'yopuedohacerlotambien'
 
-@app.route('/init')
-def hola():
-    return 'hola'
 
 @app.route('/')
 def index():
-    if 'username' in session:
-        return f'Logged in as {session["username"]}'
-    return 'you are not logged in'
-   
+    if 'usuario' in session:
+        return render_template('base.html')
+    else:
+        return redirect(url_for('login'))
+    
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST' :
-        session['username'] = request.form['username']
-        return redirect(url_for('index'))
-    return '''
-    <form method="post">
-        <p><input type=text name=username>
-        <p><input type=submit value=Login>
-    </form>
-    '''
+    if request.method == 'GET' :
+        return render_template('login.html')
+    else:
+        print(request.form)
+        usuario = request.form['usuario']
+        clave = request.form['clave']
+        if usuario == 'david' and clave == '123':
+            session['usuario'] = usuario
+            return redirect(url_for('index'))
+        else:         
+            return redirect(url_for('login'))

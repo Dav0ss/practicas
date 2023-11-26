@@ -19,22 +19,23 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+      <a href="#" class="h1"><b>SysCont</b>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Por favor, inicia tu sesión:</p>
+       
 
-      <form action="../../index3.html" method="post">
+      <form action="{{url_for('login')}}" method="post">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="usuario">
+          <input type="text" name="usuario" class="form-control" placeholder="Usuario">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+              <span class="fas fa-user"></span>
             </div>
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="contraseña">
+          <input type="password" name="clave" class="form-control" placeholder="Clave de seguridad">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>

@@ -26,3 +26,9 @@ def login():
             return redirect(url_for('index'))
         else:         
             return redirect(url_for('login'))
+
+#carga la vista de tabla en la opcion registrar cuenta
+
+@app.route('/vista-tabla-registrar-cuenta')
+def vistaTabla():
+    return render_template('tabla1.html')

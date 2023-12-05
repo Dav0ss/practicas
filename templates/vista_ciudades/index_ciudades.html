@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block dinamico %}
+{% if ciudad | length > 0 %}
+<!-- Main content -->
+   <!-- /.card-header -->            
+    <div class="card-body">
+        <table id="example2" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ciudad in ciudad %}
+                <tr>
+                    <th scope="row">{{ ciudad ['id_ciudad'] }}</th>
+                    <td>{{ ciudad['descri_ciudad']}}</td>
+                    <td>
+                      <a href="" class="btn btn-primary">Editar</a>
+                      <a href="" class="btn btn-warning">Eliminar</a>
+                    </td>
+                  </tr>
+                {% endfor %}
+            </tfoot>
+        </table>
+    </div>
+    <!-- /.container-fluid -->
+    {% endif %}    
+{% endblock %}
+
+{% block mi_javascript %}
+<script>
+$(function(){
+    $('#example2').DataTable();
+});
+
+</script>
+{% endblock %}

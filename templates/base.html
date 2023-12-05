@@ -12,6 +12,11 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/adminlte.min.css')}}">
+  <!-- datatable code -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+  <!-- datatable code end -->
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -72,15 +77,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url_for('vistaTabla')}}" class="nav-link">
+                <a href="{{ url_for('index_ciudad')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Registrar Plan de Cuentas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{ url_for('index_persona') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Top Navigation + Sidebar</p>
+                  <p>Otra vista para probar las herencias</p>
                 </a>
               </li>
             </ul>
@@ -108,37 +113,22 @@
             </ol>
           </div>
         </div>
+        
       </div><!-- /.container-fluid -->
     </section>
 
     <!-- Main content -->
     <section class="content">
-
-      <!-- Default box -->
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Title</h3>
-
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-              <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
-        </div>
-        <div class="card-body">
-          {% block tabla %}
+      <div><h3>titulo</h3>
+        <nav>
+          {% block dinamico %}
           {% endblock %}
-        </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-          Footer
-        </div>
-        <!-- /.card-footer-->
+
+
+        </nav>
+        
       </div>
-      <!-- /.card -->
+      
 
     </section>
     <!-- /.content -->
@@ -167,7 +157,9 @@
 <!-- AdminLTE App -->
 <script src="{{ url_for('static', filename='js/adminlte.min.js')}}"></script>
 
-{% block mi_javscript %}
+<script src="{{ url_for('static', filename='plugins/datatables/jquery.dataTables.min.js') }}"></script>
+
+{% block mi_javascript %}
 {% endblock %}
 </body>
 </html>
